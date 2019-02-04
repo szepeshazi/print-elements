@@ -1,0 +1,94 @@
+body {
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: Roboto, sans-serif;
+    font-size: 16px;
+}
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+    color: #29627e;
+}
+
+a:visited {
+    color: #29627e;
+}
+
+div.header img {
+    width: 1200px;
+}
+
+nav {
+    width: 100%;
+    background: #c0e0e0;
+    font-weight: bold;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+}
+
+nav ul li {
+    margin: 5px 15px;
+}
+
+main {
+    margin: 20px;
+    display: flex;
+}
+
+.article-header {
+    display: flex;
+    justify-content: center;
+}
+
+.article-header img {
+    margin: 10px 30px;
+}
+
+.article-header .title {
+    margin: auto;;
+}
+
+.article-header .title h3 {
+    font-style: italic;
+    color: #29627e;
+}
+
+p img {
+    float: left;
+    margin-right: 15px;
+}
+
+main article aside {
+    width: 40%;
+    padding-left: .5rem;
+    margin-left: .5rem;
+    float: right;
+    box-shadow: inset 5px 0 5px -5px #29627e;
+    font-style: italic;
+    color: #29627e;
+}
+
+aside.related {
+    box-shadow: inset 5px 0 5px -5px #29627e;
+    margin: 10px 0 10px 10px;
+    padding-left: 15px;
+}
+
+aside.related article {
+    margin-bottom: 25px;
+}
+
+aside > p {
+    margin: .5rem;
+}
+
+div.actions {
+    display: flex;
+    justify-content: space-around;
+    margin: 15px 25px;
+}
