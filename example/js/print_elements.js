@@ -5,51 +5,46 @@ const PrintElements = (function () {
     const preservePrintClass = "pe-preserve-print";
     const bodyElementName = "BODY";
 
-    const _hide = function(element) {
+    const _hide = function (element) {
         if (!element.classList.contains(preservePrintClass)) {
             element.classList.add(hideFromPrintClass);
         }
     };
 
-    const _preserve = function(element) {
+    const _preserve = function (element) {
         element.classList.remove(hideFromPrintClass);
         element.classList.add(preservePrintClass);
     };
 
-    const _clean = function(element) {
+    const _clean = function (element) {
         element.classList.remove(hideFromPrintClass);
         element.classList.remove(preservePrintClass);
     };
 
-    const _attachPrintClasses = function (element) {
-        _preserve(element);
+    const _walkSiblings = function (element, callback) {
         let sibling = element.previousElementSibling;
         while (sibling) {
-            _hide(sibling);
+            callback(sibling);
             sibling = sibling.previousElementSibling;
         }
         sibling = element.nextElementSibling;
         while (sibling) {
-            _hide(sibling);
+            callback(sibling);
             sibling = sibling.nextElementSibling;
         }
+    };
+
+    const _attachPrintClasses = function (element) {
+        _preserve(element);
+        _walkSiblings(element, _hide);
     };
 
     const _cleanup = function (element) {
         _clean(element);
-        let sibling = element.previousElementSibling;
-        while (sibling) {
-            _clean(sibling);
-            sibling = sibling.previousElementSibling;
-        }
-        sibling = element.nextElementSibling;
-        while (sibling) {
-            _clean(sibling);
-            sibling = sibling.nextElementSibling;
-        }
+        _walkSiblings(element, _clean);
     };
 
-    const _walkTree = function(element, callback) {
+    const _walkTree = function (element, callback) {
         let currentElement = element;
         callback(currentElement);
         currentElement = currentElement.parentElement;
@@ -59,12 +54,13 @@ const PrintElements = (function () {
         }
     };
 
-    const _print = function(elements) {
-        for (const element of Array.from(elements)) {
+    const _print = function (elements) {
+        let iterableElements = Array.from(elements);
+        for (const element of iterableElements) {
             _walkTree(element, _attachPrintClasses);
         }
         window.print();
-        for (const element of Array.from(elements)) {
+        for (const element of iterableElements) {
             _walkTree(element, _cleanup);
         }
     };
