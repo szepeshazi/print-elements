@@ -116,11 +116,6 @@
         </article>
     </aside>
 </main>
-<div class="actions">
-    <button onclick="PrintElements.print(document.getElementsByClassName('main-article'));">Print main article only</button>
-    <button onclick="PrintElements.print(document.getElementsByTagName('main'))">Print main article with teasers</button>
-    <button onclick="PrintElements.print([document.getElementById('firstRelated')])">Print first teaser only</button>
-</div>
 <footer>
     <nav>
         <ul>
@@ -130,5 +125,10 @@
         </ul>
     </nav>
 </footer>
+<div class="actions">
+    <button onclick="PrintElements.print(document.getElementsByClassName('main-article'));">Print main article only</button>
+    <button onclick="PrintElements.print(document.getElementsByTagName('main'))">Print main article with teasers</button>
+    <button onclick="PrintElements.print([document.getElementById('firstRelated')])">Print first teaser only</button>
+</div>
 </body>
 </html>
