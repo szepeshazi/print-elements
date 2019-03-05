@@ -60,13 +60,12 @@ var PrintElements = (function () {
     };
 
     var _print = function (elements) {
-        var iterableElements = Array.from(elements);
-        for (var i = 0; i < iterableElements.length; i++) {
-            _walkTree(iterableElements[i], _attachPrintClasses);
+        for (var i = 0; i < elements.length; i++) {
+            _walkTree(elements[i], _attachPrintClasses);
         }
         window.print();
-        for (i = 0; i < iterableElements.length; i++) {
-            _walkTree(iterableElements[i], _cleanup);
+        for (i = 0; i < elements.length; i++) {
+            _walkTree(elements[i], _cleanup);
         }
     };
 
