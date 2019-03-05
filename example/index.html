@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="css/site.css">
     <link rel="stylesheet" type="text/css" href="css/print.css" media="print">
-    <script type="text/javascript" src="https://polyfill.io/v3/polyfill.js?features=es5,es6&flags=gated"></script>
     <script type="text/javascript" src="js/print_elements.js"></script>
-    <title>Print nodes demonstration</title>
+    <title>Print elements demonstration</title>
 </head>
 <body>
 <div class="header">
@@ -127,7 +126,7 @@
     </nav>
 </footer>
 <div class="actions">
-    <button onclick="PrintElements.print(document.getElementsByClassName('main-article'));">Print main article only</button>
+    <button onclick="PrintElements.print(document.getElementsByClassName('main-article'))">Print main article only</button>
     <button onclick="PrintElements.print(document.getElementsByTagName('main'))">Print main article with teasers</button>
     <button onclick="PrintElements.print([document.getElementById('firstRelated')])">Print first teaser only</button>
     <button onclick="PrintElements.print(document.getElementsByClassName('related-article'))">Print all teasers</button>

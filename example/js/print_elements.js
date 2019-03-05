@@ -1,18 +1,18 @@
-/*jshint esversion: 6 */
+var PrintElements = (function () {
+    "use strict";
 
-const PrintElements = (function () {
-    const hideFromPrintClass = "pe-no-print";
-    const preservePrintClass = "pe-preserve-print";
-    const preserveAncestorClass = "pe-preserve-ancestor";
-    const bodyElementName = "BODY";
+    var hideFromPrintClass = "pe-no-print";
+    var preservePrintClass = "pe-preserve-print";
+    var preserveAncestorClass = "pe-preserve-ancestor";
+    var bodyElementName = "BODY";
 
-    const _hide = function (element) {
+    var _hide = function (element) {
         if (!element.classList.contains(preservePrintClass)) {
             element.classList.add(hideFromPrintClass);
         }
     };
 
-    const _preserve = function (element, isStartingElement) {
+    var _preserve = function (element, isStartingElement) {
         element.classList.remove(hideFromPrintClass);
         element.classList.add(preservePrintClass);
         if (!isStartingElement) {
@@ -20,14 +20,14 @@ const PrintElements = (function () {
         }
     };
 
-    const _clean = function (element) {
+    var _clean = function (element) {
         element.classList.remove(hideFromPrintClass);
         element.classList.remove(preservePrintClass);
         element.classList.remove(preserveAncestorClass);
     };
 
-    const _walkSiblings = function (element, callback) {
-        let sibling = element.previousElementSibling;
+    var _walkSiblings = function (element, callback) {
+        var sibling = element.previousElementSibling;
         while (sibling) {
             callback(sibling);
             sibling = sibling.previousElementSibling;
@@ -39,18 +39,18 @@ const PrintElements = (function () {
         }
     };
 
-    const _attachPrintClasses = function (element, isStartingElement) {
+    var _attachPrintClasses = function (element, isStartingElement) {
         _preserve(element, isStartingElement);
         _walkSiblings(element, _hide);
     };
 
-    const _cleanup = function (element, isStartingElement) {
+    var _cleanup = function (element, isStartingElement) {
         _clean(element);
         _walkSiblings(element, _clean);
     };
 
-    const _walkTree = function (element, callback) {
-        let currentElement = element;
+    var _walkTree = function (element, callback) {
+        var currentElement = element;
         callback(currentElement, true);
         currentElement = currentElement.parentElement;
         while (currentElement && currentElement.nodeName !== bodyElementName) {
@@ -59,14 +59,14 @@ const PrintElements = (function () {
         }
     };
 
-    const _print = function (elements) {
-        let iterableElements = Array.from(elements);
-        for (const element of iterableElements) {
-            _walkTree(element, _attachPrintClasses);
+    var _print = function (elements) {
+        var iterableElements = Array.from(elements);
+        for (var i = 0; i < iterableElements.length; i++) {
+            _walkTree(iterableElements[i], _attachPrintClasses);
         }
         window.print();
-        for (const element of iterableElements) {
-            _walkTree(element, _cleanup);
+        for (i = 0; i < iterableElements.length; i++) {
+            _walkTree(iterableElements[i], _cleanup);
         }
     };
 
