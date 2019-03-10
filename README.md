@@ -19,6 +19,8 @@ will be marked with a class to keep them in the print view. All siblings of sele
 siblings of their ancestors will be marked with a class to hide from print view. 
 A print-only css will take care of actually hiding and showing the respective elements.
 
+For a more detailed story of the why and how behind this library, read my [Medium article](https://medium.com/@aszepeshazi/printing-selected-elements-on-a-web-page-from-javascript-a878ac873828) on the subject.
+
 ### Motivation
 
 There are several approaches out there for the problem of how to print a part of an HTML page. 
